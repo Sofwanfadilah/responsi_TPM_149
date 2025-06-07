@@ -269,7 +269,8 @@ WIT : ${formatter.format(wit)}
                               filled: true,
                               fillColor: Colors.green.withOpacity(0.05),
                             ),
-                            onChanged: (_) => setState(() => _hasConverted = false),
+                            onChanged: (_) =>
+                                setState(() => _hasConverted = false),
                           ),
                           const SizedBox(height: 16),
                           Row(
@@ -302,11 +303,13 @@ WIT : ${formatter.format(wit)}
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 8),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
                                 child: CircleAvatar(
                                   backgroundColor: Colors.green,
                                   child: IconButton(
-                                    icon: const Icon(Icons.swap_horiz, color: Colors.white),
+                                    icon: const Icon(Icons.swap_horiz,
+                                        color: Colors.white),
                                     onPressed: _swapCurrencies,
                                   ),
                                 ),
@@ -350,10 +353,12 @@ WIT : ${formatter.format(wit)}
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16),
                               ),
                               onPressed: _convertCurrency,
-                              child: const Text('Konversi', style: TextStyle(fontSize: 16)),
+                              child: const Text('Konversi',
+                                  style: TextStyle(fontSize: 16)),
                             ),
                           ),
                           if (_hasConverted) ...[
@@ -363,7 +368,10 @@ WIT : ${formatter.format(wit)}
                                 children: [
                                   Text(
                                     'Hasil Konversi:',
-                                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(
                                           color: Colors.green.shade700,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -371,14 +379,18 @@ WIT : ${formatter.format(wit)}
                                   ),
                                   const SizedBox(height: 10),
                                   Container(
-                                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 16, horizontal: 32),
                                     decoration: BoxDecoration(
                                       color: Colors.green.withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: Text(
                                       '${NumberFormat.currency(locale: 'id_ID', symbol: _toCurrency).format(_result)}',
-                                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineMedium
+                                          ?.copyWith(
                                             color: Colors.green,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -388,7 +400,10 @@ WIT : ${formatter.format(wit)}
                                   const SizedBox(height: 24),
                                   Text(
                                     'Waktu Saat Ini (Berbagai Zona):',
-                                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(
                                           color: Colors.green.shade700,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -420,7 +435,9 @@ WIT : ${formatter.format(wit)}
                       padding: const EdgeInsets.only(top: 16),
                       child: Text(
                         provider.error,
-                        style: TextStyle(color: Colors.red.shade700, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.red.shade700,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -429,7 +446,8 @@ WIT : ${formatter.format(wit)}
                     width: double.infinity,
                     child: ElevatedButton.icon(
                       icon: const Icon(Icons.receipt_long),
-                      label: const Text('Penukaran Uang', style: TextStyle(fontSize: 16)),
+                      label: const Text('Penukaran Uang',
+                          style: TextStyle(fontSize: 16)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green.shade700,
                         foregroundColor: Colors.white,
@@ -448,7 +466,8 @@ WIT : ${formatter.format(wit)}
                     width: double.infinity,
                     child: ElevatedButton.icon(
                       icon: const Icon(Icons.feedback),
-                      label: const Text('Kesan & Pesan', style: TextStyle(fontSize: 16)),
+                      label: const Text('Kesan & Pesan',
+                          style: TextStyle(fontSize: 16)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green.shade700,
                         foregroundColor: Colors.white,
