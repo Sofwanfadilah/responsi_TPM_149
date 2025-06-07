@@ -14,6 +14,7 @@ import 'screens/exchange_screen.dart';
 import 'services/auth_service.dart';
 import 'services/database_helper.dart';
 import 'services/notification_helper.dart';
+import 'screens/feedback_screen.dart';
 
 void main() async {
   // Pastikan binding Flutter diinisialisasi
@@ -101,7 +102,8 @@ class MyApp extends StatelessWidget {
           '/home': (context) => const HomeScreen(),
           '/profile': (context) => const ProfileScreen(),
           '/history': (context) => const HistoryScreen(),
-          '/exchange': (context) => const ExchangeScreen(), // route baru
+          '/exchange': (context) => const ExchangeScreen(),
+          '/feedback': (context) => const FeedbackScreen(), // route baru
         },
       ),
     );

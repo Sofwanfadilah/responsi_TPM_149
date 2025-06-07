@@ -34,6 +34,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Riwayat Konversi'),
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+        elevation: 0,
       ),
       body: Consumer<CurrencyProvider>(
         builder: (context, provider, child) {
@@ -48,11 +51,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 children: [
                   Text(
                     provider.error,
-                    style: TextStyle(color: Colors.red.shade700),
+                    style: TextStyle(color: Colors.red.shade700, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 16),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green.shade700,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                    ),
                     onPressed: _loadHistory,
                     child: const Text('Coba Lagi'),
                   ),
@@ -70,7 +81,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           return RefreshIndicator(
             onRefresh: _loadHistory,
             child: ListView.builder(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(12),
               itemCount: provider.exchangeHistory.length,
               itemBuilder: (context, index) {
                 final history = provider.exchangeHistory[index];
@@ -81,17 +92,31 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 final toCurrency = history['to_currency'];
 
                 return Card(
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
                   child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                     title: Text(
                       '${NumberFormat.currency(locale: 'id_ID', symbol: fromCurrency).format(amount)} → ${NumberFormat.currency(locale: 'id_ID', symbol: toCurrency).format(result)}',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     subtitle: Text(
                       DateFormat('dd MMM yyyy HH:mm').format(date),
+                      style: const TextStyle(color: Colors.black54),
                     ),
-                    trailing: Text(
-                      'Rate: ${(result / amount).toStringAsFixed(4)}',
-                      style: Theme.of(context).textTheme.bodySmall,
+                    trailing: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.green.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        'Rate: ${(result / amount).toStringAsFixed(4)}',
+                        style: TextStyle(color: Colors.green.shade700, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 );
